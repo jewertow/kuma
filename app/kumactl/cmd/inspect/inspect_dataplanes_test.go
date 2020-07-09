@@ -229,26 +229,26 @@ var _ = Describe("kumactl inspect dataplanes", func() {
 			},
 			Entry("should support Table output by default", testCase{
 				outputFormat: "",
-				goldenFile:   "inspect-dataplanes.golden.txt",
+				goldenFile:   "get-dataplanes.golden.txt",
 				matcher: func(expected interface{}) gomega_types.GomegaMatcher {
 					return WithTransform(strings.TrimSpace, Equal(strings.TrimSpace(string(expected.([]byte)))))
 				},
 			}),
 			Entry("should support Table output explicitly", testCase{
 				outputFormat: "-otable",
-				goldenFile:   "inspect-dataplanes.golden.txt",
+				goldenFile:   "get-dataplanes.golden.txt",
 				matcher: func(expected interface{}) gomega_types.GomegaMatcher {
 					return WithTransform(strings.TrimSpace, Equal(strings.TrimSpace(string(expected.([]byte)))))
 				},
 			}),
 			Entry("should support JSON output", testCase{
 				outputFormat: "-ojson",
-				goldenFile:   "inspect-dataplanes.golden.json",
+				goldenFile:   "get-dataplanes.golden.json",
 				matcher:      MatchJSON,
 			}),
 			Entry("should support YAML output", testCase{
 				outputFormat: "-oyaml",
-				goldenFile:   "inspect-dataplanes.golden.yaml",
+				goldenFile:   "get-dataplanes.golden.yaml",
 				matcher:      MatchYAML,
 			}),
 		)

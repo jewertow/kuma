@@ -1,11 +1,8 @@
 {
-    "total": 2,
-    "items": [
-      {
-        "mesh": "default",
-        "name": "experiment",
-        "creationTime": "0001-01-01T00:00:00Z",
-        "modificationTime": "0001-01-01T00:00:00Z",
+  "total": 2,
+  "items": [
+    {
+      "dataplane": {
         "networking": {
           "address": "127.0.0.1",
           "inbound": [
@@ -26,29 +23,82 @@
               }
             }
           ]
-        },
-        "type": "Dataplane"
+        }
       },
-      {
-        "mesh": "default",
-        "name": "example",
-        "creationTime": "0001-01-01T00:00:00Z",
-        "modificationTime": "0001-01-01T00:00:00Z",
+      "dataplaneInsight": {
+        "subscriptions": [
+          {
+            "id": "1",
+            "controlPlaneInstanceId": "node-001",
+            "connectTime": "2018-07-17T16:05:36.995Z",
+            "status": {
+              "total": {
+                "responsesSent": "10",
+                "responsesRejected": "1"
+              }
+            }
+          },
+          {
+            "id": "2",
+            "controlPlaneInstanceId": "node-002",
+            "connectTime": "2019-07-17T16:05:36.995Z",
+            "status": {
+              "total": {
+                "responsesSent": "20",
+                "responsesRejected": "2"
+              }
+            }
+          }
+        ],
+        "mTLS": {
+          "certificateExpirationTime": "2020-05-08T08:28:22Z",
+          "lastCertificateRegeneration": "2019-07-16T19:48:08Z",
+          "certificateRegenerations": 10
+        }
+      },
+      "mesh": "default",
+      "name": "experiment",
+      "creationTime": "2018-07-17T16:05:36.995Z",
+      "modificationTime": "2019-07-17T18:08:41Z",
+      "type": "DataplaneOverview"
+    },
+    {
+      "dataplane": {
         "networking": {
-          "address": "127.0.0.2",
+          "address": "127.0.0.1",
           "inbound": [
             {
               "port": 8080,
               "servicePort": 80,
               "tags": {
-                "service": "web",
-                "version": "v2"
+                "service": "example"
               }
             }
           ]
-        },
-        "type": "Dataplane"
-      }
-    ],
-    "next": null
+        }
+      },
+      "dataplaneInsight": {
+        "subscriptions": [
+          {
+            "id": "1",
+            "controlPlaneInstanceId": "node-001"
+          },
+          {
+            "id": "2",
+            "controlPlaneInstanceId": "node-002"
+          },
+          {
+            "id": "3",
+            "controlPlaneInstanceId": "node-003"
+          }
+        ]
+      },
+      "mesh": "default",
+      "name": "example",
+      "creationTime": "2018-07-17T16:05:36.995Z",
+      "modificationTime": "2019-07-17T18:08:41Z",
+      "type": "DataplaneOverview"
+    }
+  ],
+  "next": null
 }

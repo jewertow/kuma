@@ -28,19 +28,19 @@ func newGetDataplaneCmd(pctx *getContext) *cobra.Command {
 			}
 			name := args[0]
 			currentMesh := pctx.CurrentMesh()
-			dataplane := &mesh.DataplaneResource{}
+			dataplane := &mesh.DataplaneOverviewResource{}
 			if err := rs.Get(context.Background(), dataplane, store.GetByKey(name, currentMesh)); err != nil {
 				if store.IsResourceNotFound(err) {
 					return errors.Errorf("No resources found in %s mesh", currentMesh)
 				}
 				return errors.Wrapf(err, "failed to get mesh %s", currentMesh)
 			}
-			dataplanes := mesh.DataplaneResourceList{
-				Items: []*mesh.DataplaneResource{dataplane},
+			dataplanes := mesh.DataplaneOverviewResourceList{
+				Items: []*mesh.DataplaneOverviewResource{dataplane},
 			}
 			switch format := output.Format(pctx.args.outputFormat); format {
 			case output.TableFormat:
-				return printDataplanes(pctx.Now(), &dataplanes, cmd.OutOrStdout())
+				return printCompactDataplaneOverviews(pctx.Now(), &dataplanes, cmd.OutOrStdout())
 			default:
 				printer, err := printers.NewGenericPrinter(format)
 				if err != nil {
